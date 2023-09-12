@@ -6,123 +6,88 @@ exports[`GildedRose constructor should instantiate with provided items 1`] = `[]
 
 exports[`GildedRose should decrease quality and sellIn for a normal item 1`] = `
 [
-  "Processing item: normal with sellIn: 10 and quality: 20",
-  "Item is not Aged Brie and not Backstage passes",
-  "Item quality is greater than 0",
-  "Item is not Sulfuras, reducing quality by 1",
-  "Item is not Sulfuras, reducing sellIn by 1",
+  "normal",
+  "normal",
+  "normal",
 ]
 `;
 
 exports[`GildedRose should degrade twice as fast for normal items once sell date has passed 1`] = `
 [
-  "Processing item: normal with sellIn: 0 and quality: 20",
-  "Item is not Aged Brie and not Backstage passes",
-  "Item quality is greater than 0",
-  "Item is not Sulfuras, reducing quality by 1",
-  "Item is not Sulfuras, reducing sellIn by 1",
-  "Item sellIn is negative",
-  "Item is not Aged Brie",
-  "Item is not Backstage passes",
-  "Item quality is greater than 0",
-  "Item is not Sulfuras, reducing quality by 1",
+  "normal",
+  "normal",
+  "normal",
 ]
 `;
 
 exports[`GildedRose should drop quality to 0 for Backstage passes after concert 1`] = `
 [
-  "Processing item: Backstage passes to a TAFKAL80ETC concert with sellIn: 0 and quality: 20",
-  "Item is either Aged Brie or Backstage passes",
-  "Item quality is less than 50",
-  "Item is Backstage passes",
-  "SellIn is less than 11",
-  "Increasing quality by 1",
-  "SellIn is less than 6",
-  "Increasing quality by 1 again",
-  "Item is not Sulfuras, reducing sellIn by 1",
-  "Item sellIn is negative",
-  "Item is not Aged Brie",
-  "Setting Backstage passes quality to 0 after concert",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
 ]
 `;
 
 exports[`GildedRose should handle Sulfuras correctly (no change) 1`] = `
 [
-  "Processing item: Sulfuras, Hand of Ragnaros with sellIn: 10 and quality: 80",
-  "Item is not Aged Brie and not Backstage passes",
-  "Item quality is greater than 0",
+  "Sulfuras, Hand of Ragnaros",
+  "Sulfuras, Hand of Ragnaros",
 ]
 `;
 
 exports[`GildedRose should increase quality by 2 for Backstage passes with 10 days or less 1`] = `
 [
-  "Processing item: Backstage passes to a TAFKAL80ETC concert with sellIn: 10 and quality: 20",
-  "Item is either Aged Brie or Backstage passes",
-  "Item quality is less than 50",
-  "Item is Backstage passes",
-  "SellIn is less than 11",
-  "Increasing quality by 1",
-  "Item is not Sulfuras, reducing sellIn by 1",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
 ]
 `;
 
 exports[`GildedRose should increase quality by 3 for Backstage passes with 5 days or less 1`] = `
 [
-  "Processing item: Backstage passes to a TAFKAL80ETC concert with sellIn: 5 and quality: 20",
-  "Item is either Aged Brie or Backstage passes",
-  "Item quality is less than 50",
-  "Item is Backstage passes",
-  "SellIn is less than 11",
-  "Increasing quality by 1",
-  "SellIn is less than 6",
-  "Increasing quality by 1 again",
-  "Item is not Sulfuras, reducing sellIn by 1",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
 ]
 `;
 
 exports[`GildedRose should increase quality for Aged Brie 1`] = `
 [
-  "Processing item: Aged Brie with sellIn: 10 and quality: 20",
-  "Item is either Aged Brie or Backstage passes",
-  "Item quality is less than 50",
-  "Item is not Sulfuras, reducing sellIn by 1",
+  "Aged Brie",
+  "Aged Brie",
+  "Aged Brie",
 ]
 `;
 
 exports[`GildedRose should increase quality for Backstage passes as concert approaches 1`] = `
 [
-  "Processing item: Backstage passes to a TAFKAL80ETC concert with sellIn: 12 and quality: 20",
-  "Item is either Aged Brie or Backstage passes",
-  "Item quality is less than 50",
-  "Item is Backstage passes",
-  "Item is not Sulfuras, reducing sellIn by 1",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
+  "Backstage passes to a TAFKAL80ETC concert",
 ]
 `;
 
 exports[`GildedRose should increase quality of Aged Brie by 1 when sellIn is negative 1`] = `
 [
-  "Processing item: Aged Brie with sellIn: -1 and quality: 20",
-  "Item is either Aged Brie or Backstage passes",
-  "Item quality is less than 50",
-  "Item is not Sulfuras, reducing sellIn by 1",
-  "Item sellIn is negative",
-  "Item is Aged Brie",
-  "Increasing quality of Aged Brie by 1",
+  "Aged Brie",
+  "Aged Brie",
+  "Aged Brie",
 ]
 `;
 
 exports[`GildedRose should not decrease quality below 0 1`] = `
 [
-  "Processing item: normal with sellIn: 10 and quality: 0",
-  "Item is not Aged Brie and not Backstage passes",
-  "Item is not Sulfuras, reducing sellIn by 1",
+  "normal",
+  "normal",
 ]
 `;
 
 exports[`GildedRose should not increase quality above 50 for Aged Brie 1`] = `
 [
-  "Processing item: Aged Brie with sellIn: 10 and quality: 50",
-  "Item is either Aged Brie or Backstage passes",
-  "Item is not Sulfuras, reducing sellIn by 1",
+  "Aged Brie",
+  "Aged Brie",
 ]
 `;

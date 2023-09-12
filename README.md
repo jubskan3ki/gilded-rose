@@ -3,8 +3,9 @@
 ## Group members
 - Gaoussou Kader BAKAYOKO 
 - Alexandre GRODENT
-- Hassan AIDIBE
+- Mohamed Amine Dridi
 - Anne MICHAUD
+- Juba Ait-adda
 
 ## Specification
 
