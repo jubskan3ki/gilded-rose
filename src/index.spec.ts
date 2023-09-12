@@ -112,77 +112,90 @@ describe('GildedRose', () => {
 });
 
 test('should degrade Quality of "normal" item twice as fast after sell by date', () => {
-  const item = new Item('normal', 0, 20); // Sell by date has passed
-  const gildedRose = new GildedRose([item]);
-  expect(item.quality).toBe(20);
-  gildedRose.updateQuality();
-  expect(item.quality).toBeLessThan(20); // Quality should decrease by 2
+  runGoldenMaster(async () => {
+    const item = new Item('normal', 0, 20); // Sell by date has passed
+    const gildedRose = new GildedRose([item]);
+    expect(item.quality).toBe(20);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBeLessThan(20); // Quality should decrease by 2
+  });
 });
 
-
 test('should never allow negative Quality', () => {
-  const item = new Item('Normal Item', 5, 2); // Quality is already 0
-  const gildedRose = new GildedRose([item]);
-  gildedRose.updateQuality();
-  expect(item.quality).toBeGreaterThanOrEqual(0); // Quality should remain 0
+  runGoldenMaster(async () => {
+    const item = new Item('Normal Item', 5, 2); // Quality is already 0
+    const gildedRose = new GildedRose([item]);
+    gildedRose.updateQuality();
+    expect(item.quality).toBeGreaterThanOrEqual(0); // Quality should remain 0
+  });
 });
 
 test('should increase Quality for "Aged Brie" as it gets older', () => {
-  const item = new Item('Aged Brie', 5, 10);
-  const gildedRose = new GildedRose([item]);
-  gildedRose.updateQuality();
-  expect(item.quality).toBeGreaterThan(10); // Quality increases by 1
-});
-  
-test('should never allow Quality to be more than 50', () => {
-  const item = new Item('Aged Brie', 5, 40); // Quality is already 50
-  const gildedRose = new GildedRose([item]);
-  gildedRose.updateQuality();
-  expect(item.quality).toBeLessThan(50); // Quality should remain 50
-});
-  
-test('should never change SellIn or Quality for "Sulfuras"', () => {
-  const item = new Item('Sulfuras, Hand of Ragnaros', 5, 80); // Legendary item
-  const gildedRose = new GildedRose([item]);
-  gildedRose.updateQuality();
-  expect(item.quality).toBe(80); // Quality remains 80
-  expect(item.sellIn).toBe(5); // SellIn remains 5
+  runGoldenMaster(async () => {
+    const item = new Item('Aged Brie', 5, 10);
+    const gildedRose = new GildedRose([item]);
+    gildedRose.updateQuality();
+    expect(item.quality).toBeGreaterThan(10); // Quality increases by 1
+  });
 });
 
+test('should never allow Quality to be more than 50', () => {
+  runGoldenMaster(async () => {
+    const item = new Item('Aged Brie', 5, 40); // Quality is already 50
+    const gildedRose = new GildedRose([item]);
+    gildedRose.updateQuality();
+    expect(item.quality).toBeLessThan(50); // Quality should remain 50
+  });
+});
+
+test('should never change SellIn or Quality for "Sulfuras"', () => {
+  runGoldenMaster(async () => {
+    const item = new Item('Sulfuras, Hand of Ragnaros', 5, 80); // Legendary item
+    const gildedRose = new GildedRose([item]);
+    gildedRose.updateQuality();
+    expect(item.quality).toBe(80); // Quality remains 80
+    expect(item.sellIn).toBe(5); // SellIn remains 5
+  });
+});
 
 test('should increase Quality for "Backstage passes" according to SellIn value', () => {
-  const item1 = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20);
-  const gildedRose1 = new GildedRose([item1]);
+  runGoldenMaster(async () => {
+    const item1 = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20);
+    const gildedRose1 = new GildedRose([item1]);
 
-  expect(item1.quality).toBe(20);
-  
-  gildedRose1.updateQuality();
-  
-  expect(item1.quality).toBe(22); // Quality should increase by 2
-  
-  const item2 = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20);
-  const gildedRose2 = new GildedRose([item2]);
-  
-  expect(item2.quality).toBe(20);
-  
-  gildedRose2.updateQuality();
-  
-  expect(item2.quality).toBe(23); // Quality should increase by 3
-  
-  const item3 = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20);
-  const gildedRose3 = new GildedRose([item3]);
-  
-  expect(item3.quality).toBe(20);
-  
-  gildedRose3.updateQuality();
-  
-  expect(item3.quality).toBe(0);
+    expect(item1.quality).toBe(20);
+
+    gildedRose1.updateQuality();
+
+    expect(item1.quality).toBe(22); // Quality should increase by 2
+
+    const item2 = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20);
+    const gildedRose2 = new GildedRose([item2]);
+
+    expect(item2.quality).toBe(20);
+
+    gildedRose2.updateQuality();
+
+    expect(item2.quality).toBe(23); // Quality should increase by 3
+
+    const item3 = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20);
+    const gildedRose3 = new GildedRose([item3]);
+
+    expect(item3.quality).toBe(20);
+
+    gildedRose3.updateQuality();
+
+    expect(item3.quality).toBe(0);
+  });
 });
 
 test('should increase Quality for "Backstage passes" as SellIn value approaches', () => {
-  const item = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20);
-  const gildedRose = new GildedRose([item]);
-  expect(item.quality).toBe(20);
-  gildedRose.updateQuality();
-  expect(item.quality).toBeGreaterThan(20); // Quality should increase by 1 when SellIn is 10
+  runGoldenMaster(async () => {
+    const item = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20);
+    const gildedRose = new GildedRose([item]);
+    expect(item.quality).toBe(20);
+    gildedRose.updateQuality();
+    expect(item.quality).toBeGreaterThan(20); // Quality should increase by 1 when SellIn is 10
+  });
 });
+
